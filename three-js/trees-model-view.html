@@ -73,8 +73,9 @@
     scene.add(dirLight);
 
     const loader = new GLTFLoader();
-    loader.load("/models/low_poly_tree_scene_free.glb", (gltf) =>
-      scene.add(gltf.scene)
+    loader.load(
+      "https://github.com/Hallyson34/compare-three-babylon/releases/download/v1/low_poly_tree_scene_free.glb",
+      (gltf) => scene.add(gltf.scene)
     );
 
     let angle = 0;

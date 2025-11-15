@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <title>Babylon.js Hintze-Hall</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      #renderCanvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      #backButton {
+        position: absolute;
+        top: 60px;
+        left: 5px;
+        padding: 12px;
+        background-color: rgba(0, 0, 0, 0.73);
+        color: white;
+        border: 1px solid white;
+        border-radius: 4px;
+        cursor: pointer;
+        z-index: 1;
+      }
+      #backButton:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/babylonjs@8.28.0/babylon.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/babylonjs-loaders@8.28.0/babylon.glTF2FileLoader.min.js"></script>
+    <script src="https://mrdoob.github.io/stats.js/build/stats.min.js"></script>
+  </head>
+
+  <body>
+    <button id="backButton" onclick="window.location.href='/site/index.html'">
+      Voltar
+    </button>
+    <canvas id="renderCanvas"></canvas>
+  </body>
+
+  <script>
+    const canvas = document.getElementById("renderCanvas");
+
+    const engine = new BABYLON.Engine(canvas, true);
+    const scene = new BABYLON.Scene(engine);
+    scene.clearColor = new BABYLON.Color4(0.53, 0.81, 0.92, 1);
+
+    new BABYLON.HemisphericLight(
+      "hemisphericLight",
+      new BABYLON.Vector3(0, 1, 0),
+      scene
+    );
+
+    new BABYLON.DirectionalLight(
+      "directionalLight",
+      new BABYLON.Vector3(-1, -1, -1),
+      scene
+    );
+
+    let gltfModel;
+    BABYLON.SceneLoader.ImportMesh(
+      "",
+      "/models/",
+      "hintze-hall.glb",
+      scene,
+      (meshes) => {
+        gltfModel = meshes[0];
+        gltfModel.position = BABYLON.Vector3.Zero();
+      },
+      undefined,
+      (error) => {
+        console.error("Erro ao carregar o modelo:", error);
+      }
+    );
+
+    const stats = new Stats();
+    document.body.appendChild(stats.dom);
+
+    const camera = new BABYLON.UniversalCamera(
+      "Camera",
+      new BABYLON.Vector3(0, 6, -5),
+      scene
+    );
+    camera.setTarget(new BABYLON.Vector3(0, 6, 0));
+
+    let angle = 0;
+    const radius = 6;
+    const smoothFactor = 0.05;
+
+    engine.runRenderLoop(() => {
+      stats.begin();
+
+      angle -= 0.002;
+
+      const targetX = radius * Math.sin(angle);
+      const targetZ = radius * Math.cos(angle);
+
+      camera.position.x += (targetX - camera.position.x) * smoothFactor;
+      camera.position.z += (targetZ - camera.position.z) * smoothFactor;
+
+      camera.position.y = 6;
+      camera.setTarget(new BABYLON.Vector3(0, 6, 0));
+
+      scene.render();
+      stats.end();
+    });
+    window.addEventListener("resize", () => engine.resize());
+  </script>
+</html>

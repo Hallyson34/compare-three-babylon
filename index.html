@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comparativo de Modelos 3D: BabylonJS vs ThreeJS</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Comparativo de Modelos 3D: BabylonJS vs ThreeJS</h1>
+    </header>
+
+    <main class="container">
+      <section class="section">
+        <div class="content-header">
+          <h2>Modelo de Árvores</h2>
+          <a
+            href="https://sketchfab.com/3d-models/low-poly-tree-scene-free-89daa5e21f0d4f08a59dba0d566e88bd"
+            target="_blank"
+          >
+            (Low Poly Tree Scene Free)
+          </a>
+        </div>
+        <h3>Informações do Modelo</h3>
+        <div class="model-info">
+          <p><strong>Vértices:</strong> 377.8 mil</p>
+          <p><strong>Triângulos:</strong> 256.7 mil</p>
+          <p><strong>Malhas:</strong> 2.713</p>
+          <p><strong>Tamanho do modelo (GLB):</strong> 51 mb</p>
+        </div>
+        <div class="model-display">
+          <img
+            src="/img/trees-model.png"
+            alt="Modelo de árvores"
+            class="responsive-image"
+          />
+          <div class="model-buttons">
+            <button
+              onclick="window.location.href = '/three-js/trees-model-view.html';"
+            >
+              Visualizar com ThreeJS
+            </button>
+            <button
+              onclick="window.location.href = '/babylon-js/trees-model-view.html';"
+            >
+              Visualizar com BabylonJS
+            </button>
+          </div>
+        </div>
+        <div class="results">
+          <h2>Resultados</h2>
+
+          <div class="browser-picker">
+            <img
+              id="iconTrees"
+              class="browser-icon"
+              src="/img/chrome.png"
+              alt="chrome"
+            />
+            <span class="browser-label">Navegador</span>
+            <select id="browserSelectTrees" class="browser-select">
+              <option value="chrome" selected>Chrome</option>
+              <option value="firefox">Firefox</option>
+              <option value="opera">Opera</option>
+            </select>
+          </div>
+
+          <div class="chart-container">
+            <div class="chart-item">
+              <h3>Teste do Desempenho de FPS</h3>
+              <div class="chart-box">
+                <canvas id="fpsChartThreeModel"></canvas>
+              </div>
+              <div class="card-container">
+                <div class="performance-card">
+                  <h3>ThreeJS</h3>
+                  <ul>
+                    <li>
+                      <h4>Valor Mínimo do FPS: <strong>13,7 FPS</strong></h4>
+                    </li>
+                    <li>
+                      <h4>Valor Máximo do FPS: <strong>120,5 FPS</strong></h4>
+                    </li>
+                    <li>
+                      <h4>Média do FPS: <strong>102,46 FPS</strong></h4>
+                    </li>
+                    <li>
+                      <h4>Desvio Padrão do FPS: <strong>16,83 FPS</strong></h4>
+                    </li>
+                    <li>
+                      <h4>Mediana dos FPS: <strong>100,2 FPS</strong></h4>
+                    </li>
+                  </ul>
+                </div>
+                <div class="performance-card">
+                  <h3>BabylonJS</h3>
+                  <ul>
+                    <li>
+                      <h4>Valor Mínimo do FPS: <strong>15,4 FPS</strong></h4>
+                    </li>
+                    <li>
+                      <h4>Valor Máximo do FPS: <strong>91,5 FPS</strong></h4>
+                    </li>
+                    <li>
+                      <h4>Média do FPS: <strong>70,55 FPS</strong></h4>
+                    </li>
+                    <li>
+                      <h4>Desvio Padrão do FPS: <strong>11,4 FPS</strong></h4>
+                    </li>
+                    <li>
+                      <h4>Mediana dos FPS: <strong>68,85 FPS</strong></h4>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <h3>Teste de consumo de memória</h3>
+              <div class="chart-box">
+                <canvas id="mbChartThreeModel"></canvas>
+              </div>
+              <div class="card-container">
+                <div class="performance-card">
+                  <h3>ThreeJS</h3>
+                  <ul>
+                    <li>
+                      <h4>
+                        Consumo Mínimo de Memória: <strong>64,46 MB</strong>
+                      </h4>
+                    </li>
+                    <li>
+                      <h4>
+                        Consumo Máximo de Memória: <strong>221,98 MB</strong>
+                      </h4>
+                    </li>
+                    <li>
+                      <h4>
+                        Média do Consumo de Memória: <strong>145,63 MB</strong>
+                      </h4>
+                    </li>
+                    <li>
+                      <h4>
+                        Desvio Padrão do Consumo de Memória:
+                        <strong>51,41 MB</strong>
+                      </h4>
+                    </li>
+                    <li>
+                      <h4>
+                        Mediana do Consumo de Memória:
+                        <strong>170,42 MB</strong>
+                      </h4>
+                    </li>
+                  </ul>
+                </div>
+                <div class="performance-card">
+                  <h3>BabylonJS</h3>
+                  <ul>
+                    <li>
+                      <h4>
+                        Consumo Mínimo de Memória: <strong>154,69 MB</strong>
+                      </h4>
+                    </li>
+                    <li>
+                      <h4>
+                        Consumo Máximo de Memória: <strong>200,28 MB</strong>
+                      </h4>
+                    </li>
+                    <li>
+                      <h4>
+                        Média do Consumo de Memória: <strong>170,26 MB</strong>
+                      </h4>
+                    </li>
+                    <li>
+                      <h4>
+                        Desvio Padrão do Consumo de Memória:
+                        <strong>8,49 MB</strong>
+                      </h4>
+                    </li>
+                    <li>
+                      <h4>
+                        Mediana do Consumo de Memória: <strong>165,58 MB</strong>
+                      </h4>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="content-header">
+          <h2>Modelo do Museu Hintze Hall</h2>
+          <a
+            href="https://sketchfab.com/3d-models/hintze-hall-vr-tour-058b26fb31ed49df978de31af3dc091f"
+            target="_blank"
+          >
+            (Hintze Hall)
+          </a>
+        </div>
+        <h3>Informações do Modelo</h3>
+        <div class="model-info">
+          <p><strong>Vértices:</strong> 739.1 mil</p>
+          <p><strong>Triângulos:</strong> 1.3 milhões</p>
+          <p><strong>Malhas:</strong> 29</p>
+          <p><strong>Tamanho do modelo (GLB):</strong> 234 mb</p>
+        </div>
+        <div class="model-display">
+          <img
+            src="/img/hintze-hall-model.png"
+            alt="Museu Hintze Hall"
+            class="responsive-image"
+          />
+          <div class="model-buttons">
+            <button
+              onclick="window.location.href = '/three-js/hintze-hall-model-view.html';"
+            >
+              Visualizar com ThreeJS
+            </button>
+            <button
+              onclick="window.location.href = '/babylon-js/hintze-hall-model-view.html';"
+            >
+              Visualizar com BabylonJS
+            </button>
+          </div>
+        </div>
+        <div class="results">
+          <h2>Resultados</h2>
+
+          <div class="browser-picker">
+            <img
+              id="iconHintze"
+              class="browser-icon"
+              src="/img/chrome.png"
+              alt="chrome"
+            />
+            <span class="browser-label">Navegador</span>
+            <select id="browserSelectHintze" class="browser-select">
+              <option value="chrome" selected>Chrome</option>
+              <option value="firefox">Firefox</option>
+              <option value="opera">Opera</option>
+            </select>
+          </div>
+
+          <div class="chart-container">
+            <div class="chart-item">
+              <h3>Teste de desempenho de FPS</h3>
+              <div class="chart-box">
+                <canvas id="fpsChartHintzeHall"></canvas>
+              </div>
+              <div class="card-container">
+                <div class="performance-card">
+                  <h3>ThreeJS</h3>
+                  <ul>
+                    <li>
+                      <h4>Valor Mínimo do FPS: <strong>0,4 FPS</strong></h4>
+                    </li>
+                    <li>
+                      <h4>Valor Máximo do FPS: <strong>120 FPS</strong></h4>
+                    </li>
+                    <li>
+                      <h4>Média do FPS: <strong>109,85 FPS</strong></h4>
+                    </li>
+                    <li>
+                      <h4>Desvio Padrão do FPS: <strong>29,92 FPS</strong></h4>
+                    </li>
+                    <li>
+                      <h4>Mediana dos FPS: <strong>119,4 FPS</strong></h4>
+                    </li>
+                  </ul>
+                </div>
+                <div class="performance-card">
+                  <h3>BabylonJS</h3>
+                  <ul>
+                    <li>
+                      <h4>Valor Mínimo do FPS: <strong>0,6 FPS</strong></h4>
+                    </li>
+                    <li>
+                      <h4>Valor Máximo do FPS: <strong>120 FPS</strong></h4>
+                    </li>
+                    <li>
+                      <h4>Média do FPS: <strong>105,19 FPS</strong></h4>
+                    </li>
+                    <li>
+                      <h4>Desvio Padrão do FPS: <strong>36,43 FPS</strong></h4>
+                    </li>
+                    <li>
+                      <h4>Mediana dos FPS: <strong>119,3 FPS</strong></h4>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <h3>Teste de consumo de memória</h3>
+              <div class="chart-box">
+                <canvas id="mbChartHintzeHall"></canvas>
+              </div>
+              <div class="card-container">
+                <div class="performance-card">
+                  <h3>ThreeJS</h3>
+                  <ul>
+                    <li>
+                      <h4>
+                        Consumo Mínimo de Memória: <strong>72,32 MB</strong>
+                      </h4>
+                    </li>
+                    <li>
+                      <h4>
+                        Consumo Máximo de Memória: <strong>724,53 MB</strong>
+                      </h4>
+                    </li>
+                    <li>
+                      <h4>
+                        Média do Consumo de Memória: <strong>436,25 MB</strong>
+                      </h4>
+                    </li>
+                    <li>
+                      <h4>
+                        Desvio Padrão do Consumo de Memória:
+                        <strong>150,95 MB</strong>
+                      </h4>
+                    </li>
+                    <li>
+                      <h4>
+                        Mediana do Consumo de Memória:
+                        <strong>492,78 MB</strong>
+                      </h4>
+                    </li>
+                  </ul>
+                </div>
+                <div class="performance-card">
+                  <h3>BabylonJS</h3>
+                  <ul>
+                    <li>
+                      <h4>
+                        Consumo Mínimo de Memória: <strong>269,19 MB</strong>
+                      </h4>
+                    </li>
+                    <li>
+                      <h4>
+                        Consumo Máximo de Memória: <strong>286,95 MB</strong>
+                      </h4>
+                    </li>
+                    <li>
+                      <h4>
+                        Média do Consumo de Memória: <strong>274.5 MB</strong>
+                      </h4>
+                    </li>
+                    <li>
+                      <h4>
+                        Desvio Padrão do Consumo de Memória:
+                        <strong>2,9 MB</strong>
+                      </h4>
+                    </li>
+                    <li>
+                      <h4>
+                        Mediana do Consumo de Memória:
+                        <strong>273,26 MB</strong>
+                      </h4>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Desenvolvido por Hallyson Nobres Fernandes |
+        <a href="https://github.com/Hallyson34" target="_blank">GitHub</a>
+      </p>
+    </footer>
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -74,7 +74,7 @@
 
     const loader = new GLTFLoader();
     loader.load(
-      "https://github.com/Hallyson34/compare-three-babylon/releases/download/v1/low_poly_tree_scene_free.glb",
+      "https://www.dropbox.com/scl/fi/0tf4u77nysmj48h5543yp/low_poly_tree_scene_free.glb?rlkey=i4sbswd57nvesichr96smlffs&st=ejs5lrpm&dl=0",
       (gltf) => scene.add(gltf.scene)
     );
 
@@ -95,5 +95,11 @@
     }
 
     animate();
+
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
   </script>
 </html>

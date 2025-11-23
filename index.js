@@ -79,7 +79,7 @@ function createLineChart(canvasId, yLabel) {
         {
           label: "BabylonJS",
           data: [],
-          borderColor: "#D946EF",
+          borderColor: "#F97316",
           backgroundColor: "rgba(217, 70, 239, 0.15)",
           fill: false,
           tension: 0.25,

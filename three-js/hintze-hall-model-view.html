@@ -79,9 +79,8 @@
     scene.add(pointLight);
 
     const loader = new GLTFLoader();
-    loader.load(
-      "https://github.com/Hallyson34/compare-three-babylon/releases/download/v1/hintze-hall.glb",
-      (gltf) => scene.add(gltf.scene)
+    loader.load("/models/hintze-hall.glb", (gltf) =>
+      scene.add(gltf.scene)
     );
 
     let angle = 0,

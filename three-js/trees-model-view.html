@@ -73,9 +73,8 @@
     scene.add(dirLight);
 
     const loader = new GLTFLoader();
-    loader.load(
-      "https://pixeldrain.com/api/file/cXhgM1Tf?download",
-      (gltf) => scene.add(gltf.scene)
+    loader.load("/models/low_poly_tree_scene_free.glb", (gltf) =>
+      scene.add(gltf.scene)
     );
 
     let angle = 0;
